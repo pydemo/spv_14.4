@@ -1,0 +1,11 @@
+.load build/linux/libparquet
+.testcase 168-double-is-not-99-3.sql
+.bail on
+CREATE VIRTUAL TABLE IF NOT EXISTS nulls1 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-nulls-1.parquet');
+CREATE VIRTUAL TABLE IF NOT EXISTS nulls2 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-nulls-10.parquet');
+CREATE VIRTUAL TABLE IF NOT EXISTS nulls3 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-nulls-99.parquet');
+CREATE VIRTUAL TABLE IF NOT EXISTS no_nulls1 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-1.parquet');
+CREATE VIRTUAL TABLE IF NOT EXISTS no_nulls2 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-10.parquet');
+CREATE VIRTUAL TABLE IF NOT EXISTS no_nulls3 USING parquet('/home/ubuntu/src/vt/parquet-generator/99-rows-99.parquet');
+select count(*) from nulls3 where double_6 is not 99.0;
+.output

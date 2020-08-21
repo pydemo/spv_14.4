@@ -1,0 +1,2 @@
+SELECT COUNT(*) FROM nulls3 WHERE binary_9 >= X'62626262'
+1

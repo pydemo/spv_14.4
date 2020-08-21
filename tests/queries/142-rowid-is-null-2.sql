@@ -1,0 +1,1 @@
+SELECT * FROM nulls2 WHERE rowid IS NULL
